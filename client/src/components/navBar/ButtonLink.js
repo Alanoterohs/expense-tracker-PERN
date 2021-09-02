@@ -1,29 +1,23 @@
-import {
-  Link,
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import {
-  MenuItem,
-} from '@material-ui/core';
 
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    style: {
-      color: '#F9F9F8',
-      fontSize: 20,
-      textDecoration: 'none',
-    },
-  }));
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { MenuItem } from '@material-ui/core';
+import useStyles from './style';
 
 function ButtonLink(props) {
   const classes = useStyles();
   return (
       <MenuItem>
         <Link
-        className={classes.style}
+        className={classes.link}
         to={props.redirection} >
-        {props.title}
+        { props.title === 'ExitToAppIcon' ? (
+          <ExitToAppIcon/>
+        ) : (
+          props.title
+        )
+        }
         </Link>
       </MenuItem>
   );

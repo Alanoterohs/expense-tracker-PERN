@@ -7,13 +7,9 @@ import {
 
 import {
   Grid,
-  Button,
   AppBar,
   Toolbar,
-  Typography,
-  MenuItem,
-  Menu,
-  Avatar } from "@material-ui/core";
+ } from "@material-ui/core";
 
 import useStyles from './style';
 import ButtonLink from './ButtonLink';
@@ -36,10 +32,7 @@ function NavBar() {
             />
          </div>
          <div className={classes.right}>
-            <ButtonLink
-            redirection = 'login'
-            title = 'Cerrar Sesión'
-            />
+          <ButtonLink title = 'ExitToAppIcon' redirection = 'login'/>
          </div>
          </Toolbar>
      </AppBar>
