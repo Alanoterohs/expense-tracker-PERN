@@ -3,7 +3,6 @@ import {
   Switch,
   Route,
   Redirect,
-  Link,
 } from 'react-router-dom';
 
 import {
@@ -16,33 +15,37 @@ import {
   Menu,
   Avatar } from "@material-ui/core";
 
-// #3463F9
+import useStyles from './style';
+import ButtonLink from './ButtonLink';
+
 function NavBar() {
+  const classes = useStyles();
   return (
-    <div>
+    <Grid container component="main">
      <Router>
-     <AppBar position = "sticky" >
+     <AppBar position = "sticky" className={classes.root}>
         <Toolbar>
-          <div >
-             <MenuItem>
-               <Link to="/home" >Balance</Link>
-             </MenuItem>
-             <MenuItem >
-               <Link to="/operations" >Operaciones</Link>
-             </MenuItem>
+          <div className={classes.left}>
+            <ButtonLink
+            redirection = 'balance'
+            title = 'Balance'
+            />
+            <ButtonLink
+            redirection = 'operations'
+            title = 'Operaciones'
+            />
          </div>
-         <div>
-             <MenuItem>
-               <Link to="/login" >Cerrar Sesión</Link>
-             </MenuItem>
+         <div className={classes.right}>
+            <ButtonLink
+            redirection = 'login'
+            title = 'Cerrar Sesión'
+            />
          </div>
          </Toolbar>
      </AppBar>
      </Router>
-   </div>
+   </Grid>
   );
 }
-// <Route path="/home" render= {() => <Balance income={income} setIncome={setIncome} />  } />
-// <Route path="/operations" render = {() =>  <Form income={income} setIncome={setIncome} />}></Route>
 
 export default NavBar;
