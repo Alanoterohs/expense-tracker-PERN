@@ -1,9 +1,9 @@
-import NavBar from './components/navBar/NavBar';
+import Expenses from './components/expensesItems/expenses';
 
 function App() {
   return (
     <div className="App">
-      <NavBar/>
+      <Expenses/>
     </div>
   );
 }
