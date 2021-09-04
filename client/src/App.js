@@ -1,9 +1,9 @@
-import Expenses from './components/expensesItems/expenses';
+import Form from './components/formOperations/form';
 
 function App() {
   return (
     <div className="App">
-      <Expenses/>
+      <Form/>
     </div>
   );
 }
