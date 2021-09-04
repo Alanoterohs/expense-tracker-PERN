@@ -1,9 +1,9 @@
-import Form from './components/formOperations/form';
+import Balance from './components/balance/Balance';
 
 function App() {
   return (
     <div className="App">
-      <Form/>
+      <Balance/>
     </div>
   );
 }
