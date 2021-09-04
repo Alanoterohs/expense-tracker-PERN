@@ -1,9 +1,9 @@
-import Balance from './components/balance/Balance';
+import ContainerLastExpenses from './components/lastExpenses/ContainerLastExpenses';
 
 function App() {
   return (
     <div className="App">
-      <Balance/>
+      <ContainerLastExpenses/>
     </div>
   );
 }
