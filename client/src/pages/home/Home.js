@@ -13,7 +13,7 @@ import {
 function Home() {
   const classes = useStyles();
   return (
-    <Grid className={classes.paper}>
+    <Grid className={classes.root}>
     <Balance/>
     <ContainerLastExpenses/>
     </Grid>

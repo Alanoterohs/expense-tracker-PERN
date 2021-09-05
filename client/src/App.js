@@ -1,9 +1,9 @@
-import Home from './pages/home/Home';
+import FormExpenses from './pages/formExpenses/FormExpenses';
 
 function App() {
   return (
     <div className="App">
-      <Home/>
+      <FormExpenses/>
     </div>
   );
 }
