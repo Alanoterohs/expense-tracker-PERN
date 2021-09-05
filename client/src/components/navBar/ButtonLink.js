@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 
-
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { MenuItem } from '@material-ui/core';
 import useStyles from './style';
@@ -11,7 +10,7 @@ function ButtonLink(props) {
       <MenuItem>
         <Link
         className={classes.link}
-        to={props.redirection} >
+        to= {props.redirection} >
         { props.title === 'ExitToAppIcon' ? (
           <ExitToAppIcon/>
         ) : (

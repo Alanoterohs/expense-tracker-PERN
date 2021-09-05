@@ -1,9 +1,9 @@
-import FormExpenses from './pages/formExpenses/FormExpenses';
+import PrivateRoute from './pages/privateRoutes/PrivateRoute';
 
 function App() {
   return (
     <div className="App">
-      <FormExpenses/>
+      <PrivateRoute/>
     </div>
   );
 }
