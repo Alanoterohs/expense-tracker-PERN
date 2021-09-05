@@ -24,23 +24,23 @@ const useStyles = makeStyles({
 });
 
 
-function Expenses() {
+function Expenses(props) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
       <CardContent>
         <Typography variant="h5" component="h2">
-          Titulo
+          {props.title}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          adjective
+          {props.description}
         </Typography>
         <Typography variant="h6" component="h6">
-          $1500
+          {props.amount}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">13/4</Button>
+        <Button size="small">boton</Button>
       </CardActions>
     </Card>
   );

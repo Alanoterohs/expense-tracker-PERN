@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react';
 import Form from '../../components/formOperations/Form';
+import ListExpenses from '../../components/expensesItems/ListExpenses';
 function FormExpenses() {
 
   const [operation, setOperation] = useState([]);
@@ -45,6 +46,9 @@ function FormExpenses() {
       date = {date}
       setDate = {setDate}
       handleOnSubmit = {handleOnSubmit}
+      />
+      <ListExpenses
+      operation = {operation}
       />
     </Fragment>
   );
