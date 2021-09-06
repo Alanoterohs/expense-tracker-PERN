@@ -15,7 +15,7 @@ function NavBar() {
         <Toolbar>
           <div className={classes.left}>
             <ButtonLink
-            redirection = '/balance'
+            redirection = '/'
             title = 'Balance'
             />
             <ButtonLink

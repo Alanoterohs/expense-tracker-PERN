@@ -1,5 +1,6 @@
 import Balance from '../../components/balance/Balance';
 import ContainerLastExpenses  from '../../components/lastExpenses/ContainerLastExpenses';
+import ListExpenses from '../../components/expensesItems/ListExpenses';
 import useStyles from './style';
 
 import {
@@ -10,12 +11,14 @@ import {
 } from '@material-ui/core';
 
 
-function Home() {
+function Home({ operation }) {
   const classes = useStyles();
   return (
     <Grid className={classes.root}>
     <Balance/>
-    <ContainerLastExpenses/>
+    <ContainerLastExpenses>
+      <ListExpenses operation = {operation}/>
+    </ContainerLastExpenses>
     </Grid>
   );
 }

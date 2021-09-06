@@ -1,49 +1,31 @@
-import { makeStyles } from '@material-ui/core/styles';
+import useStyles from './style';
+import React from 'react';
 import {
+ Grid,
  Card,
- CardActions,
- CardContent,
  Button,
- Typography } from '@material-ui/core/';
-
-const useStyles = makeStyles({
-  root: {
-    minWidth: 200,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-});
-
+ Typography,
+ } from '@material-ui/core/';
 
 function Expenses(props) {
   const classes = useStyles();
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography variant="h5" component="h2">
-          {props.title}
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          {props.description}
-        </Typography>
-        <Typography variant="h6" component="h6">
-          {props.amount}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">boton</Button>
-      </CardActions>
-    </Card>
+    <Grid className = {classes.container} >
+      <Card variant="outlined">
+        <div className = {classes.flex}>
+          <Typography variant='h6'>Plata Invertida</Typography>
+          <Typography variant='h6'>+9000</Typography>
+        </div>
+        <div className = {classes.flex}>
+            <Typography color="textSecondary">Inversiones</Typography>
+            <Typography color="textSecondary">12/12</Typography>
+        </div>
+        <Button className = {classes.marginButton} variant="outlined" color="primary">Editar</Button>
+        <Button className = {classes.marginButton} variant="outlined" color="secondary">Eliminar</Button>
+      </Card>
+    </Grid>
   );
 }
+
 
 export default Expenses;

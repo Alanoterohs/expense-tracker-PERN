@@ -1,9 +1,8 @@
 import { Fragment, useState } from 'react';
 import Form from '../../components/formOperations/Form';
-import ListExpenses from '../../components/expensesItems/ListExpenses';
-function FormExpenses() {
 
-  const [operation, setOperation] = useState([]);
+function FormExpenses({ operation, setOperation }) {
+
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState();
   const [description, setDescription] = useState();
@@ -24,7 +23,6 @@ function FormExpenses() {
     };
 
     setOperation([...operation, incomerOrExpenses]);
-    console.log(operation);
 
     setDescription('');
     setAmount('');
@@ -46,9 +44,6 @@ function FormExpenses() {
       date = {date}
       setDate = {setDate}
       handleOnSubmit = {handleOnSubmit}
-      />
-      <ListExpenses
-      operation = {operation}
       />
     </Fragment>
   );
