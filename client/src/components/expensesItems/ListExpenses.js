@@ -18,6 +18,7 @@ function ListExpenses({ operation }) {
           description = {items.description}
           amount = {items.amount}
           date = {items.date}
+          category = {items.category}
           />
       ))}
     </Grid>

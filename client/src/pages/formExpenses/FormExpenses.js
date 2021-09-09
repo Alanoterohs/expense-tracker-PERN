@@ -12,7 +12,6 @@ function FormExpenses({ operation, setOperation }) {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-
     const incomerOrExpenses = {
       title,
       amount,
@@ -23,6 +22,8 @@ function FormExpenses({ operation, setOperation }) {
     };
 
     setOperation([...operation, incomerOrExpenses]);
+
+    console.log(operation);
 
     setDescription('');
     setAmount('');

@@ -1,8 +1,7 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-// import DateFnsUtils from '@date-io/date-fns';
-// import { DateTimePicker, MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
+import useStyles from './style';
 
 import {
  Button,
@@ -17,17 +16,16 @@ import {
  } from '@material-ui/core';
 
 function Form(props) {
-
+  const classes = useStyles();
   return (
-    <Grid container component="main">
+    <Grid container component="main" className= {classes.root}>
       <Container component="main" maxWidth="sm" style={{ backgroundColor: '#ffffff', }}>
-          <Typography component="h1" variant="h4">
+          <Typography component="h1" variant="h4" className= {classes.typography}>
             Operaciones
           </Typography>
           <form onSubmit = {props.handleOnSubmit}>
             <TextField
               size="small"
-              variant="outlined"
               margin="normal"
               fullWidth
               label="Título del gasto"
@@ -38,7 +36,6 @@ function Form(props) {
             />
             <TextField
             size="small"
-            variant="outlined"
             margin="normal"
             fullWidth
             label="Monto"
@@ -49,7 +46,6 @@ function Form(props) {
             />
             <TextField
               size="small"
-              variant="outlined"
               margin="normal"
               fullWidth
               label="Description"
@@ -57,11 +53,11 @@ function Form(props) {
               value= {props.description}
               onChange= {(e) => props.setDescription(e.target.value)}
               multiline
-              rows={4}
+              rows={3}
               autoFocus
             />
 
-            <FormControl margin="normal" fullWidth>
+            <FormControl margin="normal" fullWidth >
             <InputLabel shrink>Ingresos o Gastos</InputLabel>
                     <Select
                     value = {props.option}
