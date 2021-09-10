@@ -8,11 +8,11 @@ module.exports = (sequelize, Sequelize) => {
     title: {
       type: Sequelize.STRING,
     },
-    amount: {
-      type: Sequelize.FLOAT,
-    },
     description: {
       type: Sequelize.STRING,
+    },
+    amount: {
+      type: Sequelize.FLOAT,
     },
     option: {
       type: Sequelize.STRING,
