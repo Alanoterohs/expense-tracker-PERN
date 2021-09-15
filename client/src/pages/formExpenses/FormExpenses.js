@@ -1,5 +1,7 @@
 import { Fragment, useState } from 'react';
 import Form from '../../components/formOperations/Form';
+import ListExpenses from '../../components/expensesItems/ListExpenses'; 
+import ContainerLastExpenses  from '../../components/lastExpenses/ContainerLastExpenses';
 
 function FormExpenses({ operation, setOperation }) {
 
@@ -10,24 +12,46 @@ function FormExpenses({ operation, setOperation }) {
   const [category, setCategory] = useState('');
   const [date, setDate] = useState();
 
-  const handleOnSubmit = (e) => {
+
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    const incomerOrExpenses = {
-      title,
-      amount,
-      description,
-      option,
-      category,
-      date,
-    };
+    const body = { title, amount, description, option, category, date };
+    const response = await fetch('http://localhost:5000/operations/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+  }
 
-    setOperation([...operation, incomerOrExpenses]);
+  // export const deleteIncomes = async (id) => {
+  //   try {
+  //     const response = await fetch(`http://localhost:5000/operations/${id}`, {
+  //       method: 'DELETE',
+  //     });
+  //     console.log(response);
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   }
+  // };
 
-    console.log(operation);
+  // const handleOnSubmit = (e) => {
+  //   e.preventDefault();
+  //   const incomerOrExpenses = {
+  //     title,
+  //     amount,
+  //     description,
+  //     option,
+  //     category,
+  //     date,
+  //   };
 
-    setDescription('');
-    setAmount('');
-  };
+  //   setOperation([...operation, incomerOrExpenses]);
+
+  //   console.log(operation);
+
+  //   setDescription('');
+  //   setAmount('');
+  // };
 
   return (
     <Fragment>
@@ -46,6 +70,9 @@ function FormExpenses({ operation, setOperation }) {
       setDate = {setDate}
       handleOnSubmit = {handleOnSubmit}
       />
+    <ContainerLastExpenses title= 'Registros totales'>
+      <ListExpenses operation = {operation} letter = 'form'/>
+    </ContainerLastExpenses>
     </Fragment>
   );
 }
