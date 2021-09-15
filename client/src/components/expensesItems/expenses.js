@@ -9,7 +9,6 @@ import {
 
 function Expenses(props) {
   const classes = useStyles();
-
   return (
     <Grid className = {classes.container} >
       <Card variant="outlined">
@@ -21,12 +20,16 @@ function Expenses(props) {
             <Typography color="textSecondary">{props.category}</Typography>
             <Typography color="textSecondary">{props.date}</Typography>
         </div>
-        <Button className = {classes.marginButton}
-          variant="outlined"
-          color="primary">Editar</Button>
-        <Button className = {classes.marginButton}
-          variant="outlined"
-          color="secondary">Eliminar</Button>
+        { props.letter === 'balance' ? (<div></div>) : 
+        (<div>
+          <Button className = {classes.marginButton}
+            variant="outlined"
+            color="primary">Editar</Button>
+          <Button className = {classes.marginButton}
+            variant="outlined"
+            color="secondary">Eliminar</Button>
+        </div>)}
+
       </Card>
     </Grid>
   );

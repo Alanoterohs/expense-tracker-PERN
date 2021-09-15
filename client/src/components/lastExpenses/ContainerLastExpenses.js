@@ -8,10 +8,11 @@ import {
 
 function ContainerLastExpenses(props) {
   const classes = useStyles();
+
   return (
     <Grid>
       <Typography variant="h4" className={classes.typography}
-        gutterBottom> Últimos 10 registros: </Typography>
+        gutterBottom> {props.title} </Typography>
       <div>{props.children}</div>
     </Grid>
   );
