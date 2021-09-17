@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useState, useEffect } from 'react';
 import Form from '../../components/formOperations/Form';
 import ListExpenses from '../../components/expensesItems/ListExpenses'; 
 import ContainerLastExpenses  from '../../components/lastExpenses/ContainerLastExpenses';
@@ -12,46 +12,53 @@ function FormExpenses({ operation, setOperation }) {
   const [category, setCategory] = useState('');
   const [date, setDate] = useState();
 
-
+  let amountTemp;
   const handleOnSubmit = async (e) => {
-    e.preventDefault();
     const body = { title, amount, description, option, category, date };
+    console.log(body);
     const response = await fetch('http://localhost:5000/operations/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
+    setOperation([...operation, body]);
+    setTitle('')
+    setDescription('');
+    setAmount('');
+    setCategory('');
+    setOption('')
+    setDate('')
   }
 
-  // export const deleteIncomes = async (id) => {
-  //   try {
-  //     const response = await fetch(`http://localhost:5000/operations/${id}`, {
-  //       method: 'DELETE',
-  //     });
-  //     console.log(response);
-  //   } catch (err) {
-  //     console.error(err.message);
-  //   }
-  // };
+  const handleOnDelete = async (index1, id) => {
+    try {
+      const response = await fetch(`http://localhost:5000/operations/${id}`, {
+        method: 'DELETE',
+      });
+        let temp = operation.filter((v, index) => index !== index1);
+        setOperation(temp);
+      
+    } catch (err) {
+      console.error(err.message);
+    }
+  }
 
-  // const handleOnSubmit = (e) => {
-  //   e.preventDefault();
-  //   const incomerOrExpenses = {
-  //     title,
-  //     amount,
-  //     description,
-  //     option,
-  //     category,
-  //     date,
-  //   };
+  const getAllOperations = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/operations/', {
+        method: 'GET',
+      });
+      const { getOperations } = await response.json();
+      setOperation(getOperations);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
-  //   setOperation([...operation, incomerOrExpenses]);
+  useEffect(() => {
+    getAllOperations();
+  }, []);
 
-  //   console.log(operation);
-
-  //   setDescription('');
-  //   setAmount('');
-  // };
 
   return (
     <Fragment>
@@ -71,7 +78,11 @@ function FormExpenses({ operation, setOperation }) {
       handleOnSubmit = {handleOnSubmit}
       />
     <ContainerLastExpenses title= 'Registros totales'>
-      <ListExpenses operation = {operation} letter = 'form'/>
+      <ListExpenses 
+      operation = {operation}
+      letter = 'form'
+      handleOnDelete = {handleOnDelete}
+      />
     </ContainerLastExpenses>
     </Fragment>
   );
