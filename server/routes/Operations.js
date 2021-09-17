@@ -3,10 +3,13 @@ const router = new Router();
 const {
   createOperations,
   updateOperation,
-  deleteOperation, } = require('../controllers/Operations');
+  deleteOperation,
+  lastTenOperations,
+  getAllOperations,
+ } = require('../controllers/Operations');
 
-//const auth = require('../utils/auth');
-
+router.get('/', getAllOperations);
+router.get('/lastOperations', lastTenOperations);
 router.post('/', createOperations);
 router.put('/:id', updateOperation);
 router.delete('/:id', deleteOperation);
