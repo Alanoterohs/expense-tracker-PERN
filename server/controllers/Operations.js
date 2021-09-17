@@ -29,7 +29,7 @@ const updateOperation = async (req, res) => {
       { title, description, amount, category, date },
       { where: { id } },
     );
-    res.status(200).json(updatedOperation);
+    res.status(200).json({ message: 'operation updated' });
   } catch (error) {
     console.log(error.message);
     res.status(500).send('Server error');
@@ -50,8 +50,38 @@ const deleteOperation = async (req, res) => {
   }
 };
 
+const getAllOperations = async (req, res) => {
+  try {
+    const getOperations = await Operations.findAll({
+          attributes: ['id', 'title', 'description', 'amount', 'option', 'category', 'date'],
+        });
+    res.status(200).json({ getOperations });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send('Server error');
+  }
+};
+
+const lastTenOperations = async (req, res) => {
+  try {
+    const getOperations = await Operations.findAll({
+          limit: 10,
+          order: [
+            ['id', 'DESC'],
+          ],
+          attributes: ['title', 'description', 'amount', 'category', 'date', 'option'],
+        });
+    res.status(200).json({ getOperations });
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).send('Server error');
+  }
+};
+
 module.exports = {
   createOperations,
   updateOperation,
   deleteOperation,
+  lastTenOperations,
+  getAllOperations,
 };
